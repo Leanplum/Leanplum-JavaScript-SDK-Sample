@@ -5,6 +5,7 @@ import angular from 'angular';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
+import leanplum from 'leanplum';
 
 import 'angular-socket-io';
 
@@ -28,6 +29,10 @@ import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 
 import './app.scss';
+
+leanplum.setAppIdForDevelopmentMode('app_BWTRIgOs0OoevDfSsBtabRiGffu5wOFU3mkxIxA7NBs', 'dev_Bx8i3Bbz1OJBTBAu63NIifr3UwWqUBU5OhHtywo58RY');
+leanplum.start();
+leanplum.track('start');
 
 angular.module('leanplumJavaScriptSdkSampleApp', [ngCookies, ngResource, ngSanitize,
   'btford.socket-io', uiRouter, uiBootstrap, _Auth, account, admin, 'validation.match', navbar,
