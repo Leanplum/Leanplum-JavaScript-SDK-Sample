@@ -11,8 +11,7 @@ import 'angular-socket-io';
 
 import uiRouter from 'angular-ui-router';
 import uiBootstrap from 'angular-ui-bootstrap';
-// eslint-disable-next-line no-unused-vars
-import ngValidationMatch from 'angular-validation-match';
+import 'angular-validation-match';
 
 import {
   routeConfig
