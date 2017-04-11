@@ -9,14 +9,28 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
+    <h1 class="page-header">Web Push Demo</h1>
+    <p>This website is using Leanplum WebPush Alpha.</p>
+    <p>Active WebPush below to get started!</p>
+    <p>This page sends a Leanplum tracking event to the Leanplum server on start and on adding/deleting a feature in below list.</p>
+    <p>Wait a couple of seconds to receive a push sent over leanplum server.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
       <h1 class="page-header">Settings</h1>
       <div class="row">
-        <div class="col-xs-9 col-sm-2">Web Push</div>
+        <div class="col-xs-6 col-sm-2">Web Push</div>
         <div class="col-xs-3 col=sm-2">
-          <label class="switch">
-            <input type="checkbox">
+          <label class="switch" ng-show="$ctrl.settings.isWebPushSupported">
+            <input type="checkbox" ng-change="$ctrl.toggleWebPush()" ng-model="$ctrl.settings.isWebPushSubscribed">
             <div class="slider round"></div>
           </label>
+          <label ng-hide="$ctrl.settings.isWebPushSupported">Not supported in your browser.</label>
+        </div>
+        <div class="col-xs-3 col=sm-2">
+          <p>Subscribed: {{$ctrl.settings.isWebPushSubscribed}}</p>
         </div>
       </div>
     </div>

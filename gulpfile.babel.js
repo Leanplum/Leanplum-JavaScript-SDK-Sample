@@ -335,6 +335,7 @@ gulp.task('serve', cb => {
             'lint:scripts',
             'inject',
             'copy:fonts:dev',
+            'copy:sw:dev',
             'env:all'
         ],
         // 'webpack:dev',
@@ -351,6 +352,7 @@ gulp.task('serve:debug', cb => {
             'lint:scripts',
             'inject',
             'copy:fonts:dev',
+            'copy:sw:dev',
             'env:all'
         ],
         'webpack:dev',
@@ -467,6 +469,7 @@ gulp.task('build', cb => {
             'copy:extras',
             'copy:assets',
             'copy:fonts:dist',
+            'copy:sw:dist',
             'copy:server',
             'webpack:dist'
         ],
@@ -535,6 +538,16 @@ gulp.task('copy:fonts:dist', () => {
     return gulp.src('node_modules/{bootstrap,font-awesome}/fonts/*')
         .pipe(flatten())
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets/fonts`));
+});
+
+gulp.task('copy:sw:dev', () => {
+    return gulp.src('node_modules/leanplum/dist/sw/sw.js')
+        .pipe(gulp.dest(`${clientPath}/`));
+});
+
+gulp.task('copy:sw:dist', () => {
+    return gulp.src('node_modules/leanplum/dist/sw/sw.js')
+        .pipe(gulp.dest(`${paths.dist}/${clientPath}/`));
 });
 
 gulp.task('copy:assets', () => {
