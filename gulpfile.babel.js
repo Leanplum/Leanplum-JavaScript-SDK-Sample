@@ -541,12 +541,12 @@ gulp.task('copy:fonts:dist', () => {
 });
 
 gulp.task('copy:sw:dev', () => {
-    return gulp.src('node_modules/leanplum/dist/sw/sw.js')
+    return gulp.src('node_modules/leanplum/dist/sw/sw.min.js')
         .pipe(gulp.dest(`${clientPath}/`));
 });
 
 gulp.task('copy:sw:dist', () => {
-    return gulp.src('node_modules/leanplum/dist/sw/sw.js')
+    return gulp.src('node_modules/leanplum/dist/sw/sw.min.js')
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/`));
 });
 
