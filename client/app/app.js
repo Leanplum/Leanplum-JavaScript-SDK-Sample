@@ -29,7 +29,8 @@ import socket from '../components/socket/socket.service';
 
 import './app.scss';
 
-leanplum.setAppIdForDevelopmentMode('app_BWTRIgOs0OoevDfSsBtabRiGffu5wOFU3mkxIxA7NBs', 'dev_Bx8i3Bbz1OJBTBAu63NIifr3UwWqUBU5OhHtywo58RY');
+leanplum.setApiPath('https://web-push-dot-java-api-dot-leanplum-staging.appspot.com/api');
+leanplum.setAppIdForDevelopmentMode('app_KojtIIvkUMVbLtnO2OLIxuilc2vvI94uxwNSotak00Y', 'dev_cI0oyrT39vsWtM4AVXZMBP9QVnJZgMFec6H12gLb8JY');
 leanplum.start();
 leanplum.track('start');
 

@@ -39,7 +39,7 @@ export class MainController {
   }
 
   addThing() {
-    if (this.newThing) {
+    if(this.newThing) {
       leanplum.track('add_thing');
       this.$http.post('/api/things', {
         name: this.newThing
@@ -55,7 +55,7 @@ export class MainController {
 
   toggleWebPush() {
     console.log('WebPush is ', this.settings.isWebPushSubscribed);
-    if (!this.settings.isWebPushSubscribed) {
+    if(!this.settings.isWebPushSubscribed) {
       console.log('Webpush unsubscribing user...');
       leanplum.webPushUnsubscribeUser();
     } else {
