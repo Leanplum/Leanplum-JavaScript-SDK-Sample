@@ -18,12 +18,13 @@ export class MainController {
       isWebPushSubscribed: false,
     };
 
-    leanplum.addOnWebPushRegister(subscriptionStatus => {
-      console.log('subscription status: ' + subscriptionStatus);
-      this.settings.isWebPushSupported = leanplum.isWebPushSupported();
-      this.settings.isWebPushSubscribed = subscriptionStatus;
-      $scope.$apply();
-    });
+    this.settings.isWebPushSupported = leanplum.isWebPushSupported();
+    if (this.settings.isWebPushSupported) {
+      leanplum.isWebPushSubscribed().then(subscriptionStatus => {
+        this.settings.isWebPushSubscribed = subscriptionStatus;
+        $scope.$apply();
+      });
+    }
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('thing');
@@ -39,8 +40,10 @@ export class MainController {
   }
 
   addThing() {
-    if(this.newThing) {
-      leanplum.track('add_thing');
+    if (this.newThing) {
+      leanplum.track('add_thing', undefined, {
+        thingName: this.newThing
+      });
       this.$http.post('/api/things', {
         name: this.newThing
       });
@@ -49,18 +52,22 @@ export class MainController {
   }
 
   deleteThing(thing) {
-    leanplum.track('delete_thing');
+    leanplum.track('delete_thing', undefined, {
+      thingName: thing.name
+    });
     this.$http.delete(`/api/things/${thing._id}`);
   }
 
   toggleWebPush() {
     console.log('WebPush is ', this.settings.isWebPushSubscribed);
-    if(!this.settings.isWebPushSubscribed) {
+    if (!this.settings.isWebPushSubscribed) {
       console.log('Webpush unsubscribing user...');
-      leanplum.webPushUnsubscribeUser();
+      leanplum.unregisterFromWebPush();
     } else {
       console.log('Webpush subscribing user...');
-      leanplum.webPushSubscribeUser();
+      leanplum.registerForWebPush('/sw.min.js', subscriptionStatus => {
+        console.log('Subscription status: %s', subscriptionStatus);
+      });
     }
   }
 }
