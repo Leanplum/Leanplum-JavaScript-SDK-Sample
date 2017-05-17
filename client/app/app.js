@@ -5,7 +5,7 @@ import angular from 'angular';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
-import leanplum from 'leanplum';
+import leanplum from 'leanplum-javascript-sdk';
 
 import 'angular-socket-io';
 
