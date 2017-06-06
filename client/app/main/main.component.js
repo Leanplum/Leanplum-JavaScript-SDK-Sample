@@ -1,7 +1,6 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
-import leanplum from 'leanplum-javascript-sdk';
 
 export class MainController {
   $http;
@@ -17,14 +16,6 @@ export class MainController {
       isWebPushSupported: false,
       isWebPushSubscribed: false,
     };
-
-    this.settings.isWebPushSupported = leanplum.isWebPushSupported();
-    if (this.settings.isWebPushSupported) {
-      leanplum.isWebPushSubscribed().then(subscriptionStatus => {
-        this.settings.isWebPushSubscribed = subscriptionStatus;
-        $scope.$apply();
-      });
-    }
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('thing');
@@ -56,19 +47,6 @@ export class MainController {
       thingName: thing.name
     });
     this.$http.delete(`/api/things/${thing._id}`);
-  }
-
-  toggleWebPush() {
-    console.log('WebPush is ', this.settings.isWebPushSubscribed);
-    if (!this.settings.isWebPushSubscribed) {
-      console.log('Webpush unsubscribing user...');
-      leanplum.unregisterFromWebPush();
-    } else {
-      console.log('Webpush subscribing user...');
-      leanplum.registerForWebPush('/sw.min.js', subscriptionStatus => {
-        console.log('Subscription status: %s', subscriptionStatus);
-      });
-    }
   }
 }
 
