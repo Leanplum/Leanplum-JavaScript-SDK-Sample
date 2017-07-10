@@ -11,22 +11,6 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 - [Gulp](http://gulpjs.com/) (`npm install --global gulp`)
 - [MongoDB](https://www.mongodb.org/) - Keep a running daemon with `mongod`
 
-### Developing
-
-*** We are in the process of releasing the Javascript SDK on `npm`. In the meantime, you will need to locally link to the [Leanplum-javascript-SDK](https://github.com/Leanplum/Leanplum-JavaScript-SDK)
-
-### Prepare the SDK
-
-1. `cd Leanplum-Javascript-SDK`
-
-2. `npm i`
-
-3. `npm i -g grunt-cli`
-
-4. `grunt build`
-
-5. `npm link`
-
 ### Run Sample app
 
 1. Run `npm install` to install server dependencies.
@@ -40,6 +24,18 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 5. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
 
 ## Build & development
+
+### Prepare the SDK for local development
+
+1. `cd Leanplum-Javascript-SDK`
+
+2. `npm i`
+
+3. `npm i -g grunt-cli`
+
+4. `grunt build`
+
+5. `npm link`
 
 Run `gulp build` for building and `gulp serve` for preview.
 
