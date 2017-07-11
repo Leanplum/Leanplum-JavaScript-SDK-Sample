@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
-import leanplum from 'leanplum-javascript-sdk';
+import leanplum from 'leanplum-sdk';
 
 export class MainController {
   $http;

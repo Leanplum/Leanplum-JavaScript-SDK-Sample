@@ -19,9 +19,7 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 3. Run `npm i -g gulp`
 
-4. Run `npm link leanplum-javascript-sdk` to locally link the SDK
-
-5. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
+4. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
 
 ## Build & development
 

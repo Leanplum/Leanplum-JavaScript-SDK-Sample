@@ -52,7 +52,7 @@ module.exports = function makeWebpackConfig(options) {
                 'angular-ui-bootstrap',
                 'angular-ui-router',
                 'lodash',
-                'leanplum-javascript-sdk'
+                'leanplum-sdk'
             ]
         };
     }
