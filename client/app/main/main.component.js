@@ -65,7 +65,7 @@ export class MainController {
       leanplum.unregisterFromWebPush();
     } else {
       console.log('Webpush subscribing user...');
-      leanplum.registerForWebPush('/sw.min.js', subscriptionStatus => {
+      leanplum.registerForWebPush('/myServiceWorker.js', subscriptionStatus => {
         console.log('Subscription status: %s', subscriptionStatus);
       });
     }
