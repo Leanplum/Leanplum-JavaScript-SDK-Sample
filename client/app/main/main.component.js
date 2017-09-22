@@ -65,6 +65,11 @@ export class MainController {
       leanplum.unregisterFromWebPush();
     } else {
       console.log('Webpush subscribing user...');
+      /**
+       * The Leanplum SDK also includes a fully working service worker file (sw.min.js)
+       * that you can use as your Worker. myServiceWorker.js is an unminified copy of that file.
+       * You must host one of these files and register the correct path to it in registerForWebPush.
+       */
       leanplum.registerForWebPush('/myServiceWorker.js', subscriptionStatus => {
         console.log('Subscription status: %s', subscriptionStatus);
       });
