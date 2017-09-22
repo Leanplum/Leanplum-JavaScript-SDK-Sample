@@ -541,16 +541,6 @@ gulp.task('copy:fonts:dist', () => {
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets/fonts`));
 });
 
-gulp.task('copy:sw:dev', () => {
-    return gulp.src('node_modules/Leanplum-JavaScript-SDK/dist/sw/sw.min.js')
-        .pipe(gulp.dest(`${clientPath}/`));
-});
-
-gulp.task('copy:sw:dist', () => {
-    return gulp.src('node_modules/Leanplum-JavaScript-SDK/dist/sw/sw.min.js')
-        .pipe(gulp.dest(`${paths.dist}/${clientPath}/`));
-});
-
 gulp.task('copy:assets', () => {
     return gulp.src([paths.client.assets, '!' + paths.client.images])
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets`));
