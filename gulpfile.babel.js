@@ -335,7 +335,6 @@ gulp.task('serve', cb => {
             'lint:scripts',
             'inject',
             'copy:fonts:dev',
-            'copy:sw:dev',
             'env:all'
         ],
         // 'webpack:dev',
@@ -352,7 +351,6 @@ gulp.task('serve:debug', cb => {
             'lint:scripts',
             'inject',
             'copy:fonts:dev',
-            'copy:sw:dev',
             'env:all'
         ],
         'webpack:dev',
