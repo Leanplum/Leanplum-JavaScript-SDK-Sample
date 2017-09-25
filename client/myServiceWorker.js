@@ -16,22 +16,22 @@
  *  limitations under the License
  *
  */
-const ACTION_NAME_KEY = '__name__';
-const OPEN_URL_ACTION = 'Open URL';
-const ARG_URL = 'URL';
+var ACTION_NAME_KEY = '__name__';
+var OPEN_URL_ACTION = 'Open URL';
+var ARG_URL = 'URL';
 
-let openActions = {};
+var openActions = {};
 
 self.addEventListener('push', function (event) {
   console.log('MYServiceWorker: [Service Worker] Notification received.');
-  let jsonString = event.data && event.data.text() ? event.data.text() : null;
+  var jsonString = event.data && event.data.text() ? event.data.text() : null;
 
   if (!jsonString) {
     console.log('MYServiceWorker: Push received without payload, skipping display.');
     return;
   }
 
-  let options = JSON.parse(jsonString);
+  var options = JSON.parse(jsonString);
   if (!options || !options.title || !options.tag) {
     console.log('MYServiceWorker: No options, title or tag/id received, skipping ' +
       'display.');
@@ -47,7 +47,7 @@ self.addEventListener('push', function (event) {
   }
 
   // Extract title and delete from options.
-  let title = options.title;
+  var title = options.title;
   delete options.title;
 
   event.waitUntil(self.registration.showNotification(title, options));
@@ -64,8 +64,8 @@ self.addEventListener('notificationclick', function (event) {
     return;
   }
 
-  let notificationId = event.notification.tag;
-  let openActionUrl = openActions[notificationId];
+  var notificationId = event.notification.tag;
+  var openActionUrl = openActions[notificationId];
   if (!openActionUrl) {
     console.log('MYServiceWorker: [Service Worker] No action defined, doing nothing.');
     return;
